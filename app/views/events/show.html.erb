@@ -1,1 +1,5 @@
 <h2><%= @event.creator.name %></h2>
+
+<%= @event.attendees.each do |attendee| %>
+  <li><%= attendee %></li>
+<% end %>

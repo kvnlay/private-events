@@ -15,3 +15,7 @@
     <%end%>
   </div>
 </div>
+
+<%= @user.event_as_attendee.each do |event| %>
+  <li><%= event %></li>
+<% end %>
