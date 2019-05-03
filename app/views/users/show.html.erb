@@ -7,15 +7,34 @@
       </h1>
     </section>
   </aside>
-  <div>
-    <%= @events.each do |event|%>
-      <%= event.name%>
-      <%= event.location %>
-      <%= event.date %>
-    <%end%>
-  </div>
 </div>
-
-<%= @user.event_as_attendee.each do |event| %>
-  <li><%= event %></li>
-<% end %>
+<div>
+  <h3>Attended events: </h3>
+    <% @user.event_as_attendee.each do |event| %>
+      <h4><%= link_to event.name, event_path(event.id) %></h4>
+      <p>Created by: <%= event.creator.name %> </p>
+      <p>Date: <%= event.date %></p>
+      <p>Location: <%= event.location %></p>
+      <p><%= event.description unless event.description.nil? %></p><br>
+    <% end %>
+</div>
+<div>
+  <h3>Upcoming events: </h3>
+  <% @upcoming_events.each do |event| %>
+    <h4><%= link_to event.name, event_path(event.id) %></h4>
+    <p>Created by: <%= event.creator.name %> </p>
+    <p>Date: <%= event.date %></p>
+    <p>Location: <%= event.location %></p>
+    <p><%= event.description unless event.description.nil? %></p><br>
+  <% end %>
+</div>
+<div>
+  <h3>Previous events</h3>
+  <% @prev_events.each do |event| %>
+    <h4><%= link_to event.name, event_path(event.id) %></h4>
+    <p>Created by: <%= event.creator.name %> </p>
+    <p>Date: <%= event.date %></p>
+    <p>Location: <%= event.location %></p>
+    <p><%= event.description unless event.description.nil? %></p><br>
+  <% end %>
+</div>

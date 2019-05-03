@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# SessionsController
 class SessionsController < ApplicationController
   def new; end
 
@@ -6,7 +9,7 @@ class SessionsController < ApplicationController
     if user
       log_in(user)
       flash[:success] = 'You are now logged in'
-      redirect_to profile_url
+      redirect_to root_url
     else
       flash.now[:danger] = 'Wrong email address'
       render 'new'

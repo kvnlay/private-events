@@ -1,10 +1,7 @@
-Rails.application.routes.draw do
-  root 'users#index'
+# frozen_string_literal: true
 
-  get 'events', to: 'events#index'
-  get 'events/show'
-  get 'events/new'
-  post 'events', to: 'events#create'
+Rails.application.routes.draw do
+  root 'events#index'
 
   get 'signup', to: 'users#new'
   post 'signup', to: 'users#create'
@@ -13,5 +10,6 @@ Rails.application.routes.draw do
   delete 'signout', to: 'sessions#destroy'
 
   resources :users
+  resources :events
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
